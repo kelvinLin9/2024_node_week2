@@ -58,4 +58,4 @@ const postSchema = new mongoose.Schema(
 
 // mongoose 會自動將名稱開頭轉為小寫並強制在結尾加 s：如 Post => posts
 
-export default model('Post', postSchema);
+export default mongoose.model('Post', postSchema);

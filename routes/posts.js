@@ -1,15 +1,15 @@
-import postController from '../controllers/posts.js';
+import { getPosts, createPost, updatePost, deletePost } from '../controllers/posts.js';
 
 const routes = async (req, res) => {
   const { url, method } = req;
   if (url === '/posts' && method === 'GET') {
-    postController.getPosts(req, res);
+    getPosts(req, res);
   } else if (url === '/posts' && method === 'POST') {
-    postController.createPost(req, res);
+    createPost(req, res);
   } else if (url === '/posts/:id' && method === 'PATCH') {
-    postController.updatePost(req, res);
+    updatePost(req, res);
   } else if (url === '/posts/:id' && method === 'DELETE') {
-    postController.deletePost(req, res);
+    deletePost(req, res);
   } else {
     res.writeHead(404, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Route not found' }));

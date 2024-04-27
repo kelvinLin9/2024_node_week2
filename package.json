@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "node_hw_week2",
   "version": "1.0.0",
   "description": "",
