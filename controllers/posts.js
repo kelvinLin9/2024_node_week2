@@ -23,6 +23,7 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const _id = req.url.split('/')[2];
+    console.log(_id);
     try {
         const post = await parseBody(req);
         if (!mongoose.Types.ObjectId.isValid(_id)) {

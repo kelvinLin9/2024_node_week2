@@ -52,10 +52,8 @@ const postSchema = new mongoose.Schema(
             cast: false
         }]
     }, {
-        versionKey: false // 移除欄位 __v
+        versionKey: false
     }
 );
-
-// mongoose 會自動將名稱開頭轉為小寫並強制在結尾加 s：如 Post => posts
 
 export default mongoose.model('Post', postSchema);
