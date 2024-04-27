@@ -2,6 +2,8 @@ import PostModel from '../models/post.js';
 import { sendJson, sendText, parseBody } from '../services/httpUtils.js';
 
 export const getPosts = async (req, res) => {
+  const _id = req.url.split('/')[2];
+  console.log(req.url.split('/'));
     try {
         const posts = await PostModel.find();
         sendJson(res, 200, posts);
@@ -46,3 +48,15 @@ export const deletePost = async (req, res) => {
     await PostModel.findByIdAndRemove(id);
     sendJson(res, 200, { message: 'Post deleted successfully' });
 };
+
+export const deleteAllPost = async (req, res) => {
+  try {
+    const result = await PostModel.deleteMany({});
+    sendJson(res, 200, { 
+      message: 'All posts deleted successfully',
+      deletedCount: result.deletedCount 
+    });
+  } catch (error) {
+    sendJson(res, 500, { message: error.message });
+  }
+}
